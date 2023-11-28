@@ -12,10 +12,13 @@ def caesar(start_text, shift_amount, direction):
     end_text = ''
     if direction == 'decode':
             shift_amount *= -1
-    for letter in start_text:
-        position = alphabet.index(letter)        
-        new_position = position + shift_amount
-        end_text += alphabet[new_position]
+    for char in start_text:
+        if char in alphabet:
+            position = alphabet.index(char)        
+            new_position = position + shift_amount
+            end_text += alphabet[new_position]
+        else:
+             end_text += char
     print(f'The {direction}d text is: {end_text}')
 
 
