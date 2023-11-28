@@ -2,11 +2,17 @@ from caesar_alphabet import alphabet
 
 
 def main():
-    direction = input('Type "encode" to encrypt or "decode" to decrypt text.\n')
-    text = input('What is the text you would like to encode/decode?\n')
-    shift = int(input('Shift number:\n'))
-    shift = shift % 26
-    caesar(start_text=text, shift_amount=shift, direction=direction)
+    will_continue = True
+    while will_continue:
+        direction = input('Type "encode" to encrypt or "decode" to decrypt text.\n')
+        text = input('What is the text you would like to encode/decode?\n')
+        shift = int(input('Shift number:\n'))
+        shift = shift % 26
+        caesar(start_text=text, shift_amount=shift, direction=direction)
+        will_exit = input('Would you like to restart and try again? yes / no\n')
+        if will_exit == 'no':
+            will_continue = False
+            print('Exiting now.')
 
 def caesar(start_text, shift_amount, direction):
     end_text = ''
