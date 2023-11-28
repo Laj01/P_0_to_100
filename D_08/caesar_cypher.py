@@ -5,6 +5,7 @@ def main():
     direction = input('Type "encode" to encrypt or "decode" to decrypt text.\n')
     text = input('What is the text you would like to encode/decode?\n')
     shift = int(input('Shift number:\n'))
+    shift = shift % 26
     caesar(start_text=text, shift_amount=shift, direction=direction)
 
 def caesar(start_text, shift_amount, direction):
