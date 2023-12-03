@@ -1,12 +1,5 @@
 import random
 
-
-def main():
-    ...
-
-
-
-
-
-if __name__ == '__main__':
-    main()
+def random_color():
+    hue = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
+    return hue
