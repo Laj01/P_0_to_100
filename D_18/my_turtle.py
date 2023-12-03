@@ -5,7 +5,7 @@ def main():
     my_turtle = Turtle()
     my_turtle.shape('turtle')
     my_turtle.color('red')
-    for i in range(4):
+    for _ in range(4):
         my_turtle.forward(100)
         my_turtle.left(90)
 
