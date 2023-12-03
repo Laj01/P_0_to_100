@@ -1,5 +1,6 @@
 from turtle import Turtle, Screen
 
+
 def main():
     timmy = Turtle()
     timmy.color('red')
@@ -12,7 +13,6 @@ def main():
         timmy.forward(10)
 
     timmy.screen.mainloop()
-
 
 
 if __name__ == '__main__':
