@@ -11,6 +11,8 @@ def main():
         timmy.pu()
         timmy.forward(10)
 
+    timmy.screen.mainloop()
+
 
 
 if __name__ == '__main__':
