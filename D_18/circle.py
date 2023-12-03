@@ -1,5 +1,4 @@
 from turtle import Turtle, Screen
-import random
 from color import random_color
 
 
@@ -8,13 +7,15 @@ def main():
     timmy.shape()
     timmy.speed('fastest')
     timmy.screen.colormode(255)
-
-    for _ in range(36):
-        timmy.color(random_color())
-        timmy.circle(100)
-        timmy.right(-10)
-
+    draw_circle(10, timmy)
     timmy.screen.mainloop()
+
+
+def draw_circle(gap, turtle):
+    for _ in range(int(360 / gap)):
+        turtle.color(random_color())
+        turtle.circle(100)
+        turtle.right(gap * -1)    
 
 
 if __name__ == '__main__':
