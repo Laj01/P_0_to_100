@@ -7,8 +7,12 @@ screen.cv._rootwindow.resizable(False, False)
 screen.bgcolor('black')
 screen.title('Snake')
 
-
-
+start_positions = [(0, 0), (-20, 0), (-40, 0),]
+for position in start_positions:
+    part = Turtle(shape='square')
+    part.color('white')
+    part.penup()
+    part.goto(position)      
 
 
 
