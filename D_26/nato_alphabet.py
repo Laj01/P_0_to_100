@@ -7,6 +7,7 @@ df = pd.read_csv(fp, sep=',')
 
 nato_dict = {row['letter']:row['code'] for (index, row) in df.iterrows()}
 
-user_input = input('Enter your name: ')
-user_letters = [letter for letter in user_input]
-print(user_letters)
+user_input = input('Enter a word: ')
+user_letters = [letter.upper() for letter in user_input]
+user_nato = [nato_dict[letter] for letter in user_letters if letter in nato_dict]
+print(user_nato)
