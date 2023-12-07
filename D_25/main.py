@@ -20,8 +20,15 @@ while len(guessed_states) < 50:
     popup_title = f'{len(guessed_states)}/50 States correct'
     answer = screen.textinput(title=popup_title, prompt='Guess the name of the states:').title()
 
-
-    if answer in states:
+    if answer == 'Exit':
+        missing_states = []
+        for state in states:
+            if state not in guessed_states:
+                missing_states.append(state)
+        new_df = pd.DataFrame(data = {'States': missing_states})
+        new_df.to_csv('States_to_learn.csv')
+        break
+    elif answer in states:
         t = turtle.Turtle()
         t.penup()
         t.hideturtle()
@@ -29,7 +36,3 @@ while len(guessed_states) < 50:
         t.goto(int(state_data['x']), int(state_data['y']))    
         t.write(answer)
         guessed_states.append(answer)
-        
-
-
-turtle.mainloop()
