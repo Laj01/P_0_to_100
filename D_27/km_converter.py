@@ -1,11 +1,19 @@
 from tkinter import *
 
+
 def main():
     window = Tk()
     window.title('Km to Miles')
     #window.minsize(width=200, height=100)
     #window.resizable(False, False)
     window.config(padx=20, pady=20)
+
+
+    def miles_to_km():
+        miles = float(miles_input.get())
+        km = miles * 1.609
+        km_result_label.config(text=f'{km:.2f}') 
+
 
     miles_input = Entry(width=10)
     miles_input.grid(row=0, column=1)
@@ -22,9 +30,10 @@ def main():
     km_label = Label(text='KM')
     km_label.grid(row=1, column=2)
 
-    calculate_button = Button(text='Calculate')
+    calculate_button = Button(text='Calculate', command=miles_to_km)
     calculate_button.grid(row=2, column=1)
-
+    
+    
     window.mainloop()
 
 
