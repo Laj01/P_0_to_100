@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import messagebox
 import random
+import pyperclip
 
 
 ## Generate password ##
@@ -20,6 +21,7 @@ def generate_password():
     password = "".join(password_list)
     password_entry.delete(0, END)
     password_entry.insert(0, password)
+    pyperclip.copy(password)
 
 
 ## Save data ##
@@ -79,7 +81,6 @@ canvas = Canvas(width=200, height=200, highlightthickness=0)
 logo_img = PhotoImage(file='logo.png')
 canvas.create_image(100, 100, image=logo_img)
 canvas.grid(column=1, row=0)
-
 
 
 window.mainloop()
