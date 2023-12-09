@@ -27,10 +27,10 @@ def start_timer():
     reps += 1
     if reps % 8 == 0:
         count_down(LONG_BREAK_MIN * SEC)
-        title_label.config(text='Long Break', fg=RED)
+        title_label.config(text='Break', fg=RED)
     elif reps % 2 == 0:
         count_down(SHORT_BREAK_MIN * SEC)
-        title_label.config(text='Short Break', fg=PINK)
+        title_label.config(text='Break', fg=PINK)
     else:
         count_down(WORK_MIN * SEC)
         title_label.config(text='Work', fg=GREEN)
@@ -42,9 +42,15 @@ def count_down(count):
     counter_seconds = count % 60
     canvas.itemconfig(timer_text, text = f'{counter_minutes:02d}:{counter_seconds:02d}')
     if count > 0:
-        window.after(1000, count_down, count - 1)
+        window.after(10, count_down, count - 1)
     else:
         start_timer()
+        marks = ''
+        sessions = math.floor(reps / 2)
+        for _ in range(sessions):
+            marks += CHECK_MARK
+        check_marks.config(text=marks)
+
 
 
 ## UI ##
@@ -62,7 +68,7 @@ start_button.grid(column=0, row=2)
 reset_button = Button(text='Reset', highlightthickness=0)
 reset_button.grid(column=2, row=2)
 
-check_marks = Label(text=CHECK_MARK, fg=GREEN, bg=YELLOW)
+check_marks = Label(fg=GREEN, bg=YELLOW)
 check_marks.grid(column=1, row=2)
 
 canvas = Canvas(width=200, height=224, bg=YELLOW, highlightthickness=0)
