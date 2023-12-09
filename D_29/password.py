@@ -1,18 +1,26 @@
 from tkinter import *
+from tkinter import messagebox
 
 
 ## Save data ##
 def save():
-    website = website_entry.get()
-    email = email_entry.get()
-    password = password_entry.get()
+    website = website_entry.get().strip()
+    email = email_entry.get().strip()
+    password = password_entry.get().strip()
 
-    with open('data.txt', 'a') as file:
-        file.write(f'{website} | {email} | {password}\n')
+    if len(website) == 0 or len(password) == 0:
+        messagebox.showinfo(title='Error', message='Some fields are left empty!')
+    else:
+        is_ok = messagebox.askokcancel(title=website, 
+                                    message=f'The following data will be saved:\n'
+                                    f'Email: {email}\nPassword: {password}\nCan we save now?')
+        if is_ok:
+            with open('data.txt', 'a') as file:
+                file.write(f'{website} | {email} | {password}\n')
 
-    website_entry.delete(0, END)
-    password_entry.delete(0, END)
-    website_entry.focus()
+            website_entry.delete(0, END)
+            password_entry.delete(0, END)
+            website_entry.focus()
 
 
 ## UI elements ## 
