@@ -17,9 +17,24 @@ YELLOW = "#f7f5dd"
 WORK_MIN = 25
 SHORT_BREAK_MIN = 5
 LONG_BREAK_MIN = 20
+SEC = 60
+reps = 0
 
+
+## Timer ##
 def start_timer():
-    count_down(100)
+    global reps
+    reps += 1
+    if reps % 8 == 0:
+        count_down(LONG_BREAK_MIN * SEC)
+        title_label.config(text='Long Break', fg=RED)
+    elif reps % 2 == 0:
+        count_down(SHORT_BREAK_MIN * SEC)
+        title_label.config(text='Short Break', fg=PINK)
+    else:
+        count_down(WORK_MIN * SEC)
+        title_label.config(text='Work', fg=GREEN)
+
 
 ## Counting down ##
 def count_down(count):
@@ -28,6 +43,8 @@ def count_down(count):
     canvas.itemconfig(timer_text, text = f'{counter_minutes:02d}:{counter_seconds:02d}')
     if count > 0:
         window.after(1000, count_down, count - 1)
+    else:
+        start_timer()
 
 
 ## UI ##
