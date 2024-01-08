@@ -13,7 +13,9 @@ def main():
     #movies_ordered = movie_titles[::-1]
     movie_titles.reverse()
 
-    print(movie_titles)
+    with open('movies.txt', mode='w') as file:
+        for movie in movie_titles:
+            file.write(f'{movie}\n')
 
 
 
